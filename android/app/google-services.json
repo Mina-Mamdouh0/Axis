@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "27433302575",
+    "project_id": "inventory-1cde0",
+    "storage_bucket": "inventory-1cde0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27433302575:android:b840ccd5fe2a77cfd864da",
+        "android_client_info": {
+          "package_name": "com.example.inverntry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "27433302575-ebtjda07b3392v47b9ci3b53v1nlok0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD98sFs2iAnUcChGDkFELfUMxcwwo1V8q0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "27433302575-ebtjda07b3392v47b9ci3b53v1nlok0v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "27433302575-o3cm5bggm3begcvcadh42t1hbu2ivghb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.plantApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

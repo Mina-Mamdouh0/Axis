@@ -131,57 +131,7 @@ class _ProductUserDetailsState extends State<ProductUserDetails> {
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Location',
-                          textAlign: TextAlign.start,
-                          style: GoogleFonts.poppins(
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.w600,
-                            color: kDarkGreenColor,
-                          ),
-                        ),
-                        const SizedBox(width: 5.0),
-                        Text(
-                          widget.productModel.location,
-                          textAlign: TextAlign.start,
-                          style: GoogleFonts.poppins(
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.w600,
-                            color: kDarkGreenColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Status',
-                          textAlign: TextAlign.start,
-                          style: GoogleFonts.poppins(
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.w600,
-                            color: kDarkGreenColor,
-                          ),
-                        ),
-                        const SizedBox(width: 5.0),
-                        Text(
-                          widget.productModel.status,
-                          textAlign: TextAlign.start,
-                          style: GoogleFonts.poppins(
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.w600,
-                            color: kDarkGreenColor,
-                          ),
-                        ),
-                      ],
-                    ),
+
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 22.0),
                       child: Column(

@@ -60,10 +60,10 @@ class AppCubit extends Cubit<AppStates>{
     });
   }
 
-  String? typeAccount;
-  void changeTypeAccount({required String account}){
-    typeAccount=account;
-    emit(ChangeTypeAccount());
+  bool isSendMail=false;
+  void changeSendMail({required bool mail}){
+    isSendMail=mail;
+    emit(ChangeSendMail());
   }
 
   UserModel ?userModel;
@@ -339,12 +339,18 @@ void updateProduct({
   required String massageOrder,
   required String nameUser,
   required String idAdminCreatedProduct,
+  required String emailUser,
+  required String locationProduct,
+  required String statusProduct,
 }){
     emit(LoadingAddOrder());
     if(FirebaseAuth.instance.currentUser!=null){
       String id=const Uuid().v4();
       OrderModel orderModel=OrderModel(
           urlImageProduct:urlImage,
+        emailUser: emailUser,
+        locationProduct: locationProduct,
+        statusProduct: statusProduct,
         nameUser: nameUser,
         createAt: DateTime.now().toString(),
         massageOrder: massageOrder,

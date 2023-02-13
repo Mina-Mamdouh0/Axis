@@ -13,6 +13,7 @@ class CustomTextField extends StatelessWidget {
     required this.keyboardType,
      this.inputFormatters,
      this.onChanged,
+     this.validator,
      this.readOnly,
      this.onTap,
     Key? key,
@@ -28,15 +29,17 @@ class CustomTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final Function(String)? onChanged;
   final Function()? onTap;
+  final String? Function(String?)? validator ;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 15.0),
-      child: TextField(
+      child: TextFormField(
         readOnly: readOnly??false,
         controller: controller,
         maxLines: mixLines,
+        validator: validator,
         cursorColor: kDarkGreenColor,
         obscureText: obscureText,
         keyboardType: keyboardType,
@@ -72,6 +75,7 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
         onChanged: onChanged,
+
       ),
     );
   }

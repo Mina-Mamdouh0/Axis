@@ -28,10 +28,10 @@ class UpdateProductScreen extends StatelessWidget {
     final TextEditingController quantityController=TextEditingController(text: productModel.quantity);
     final TextEditingController expTimeController=TextEditingController(text: productModel.expTime);
     final TextEditingController locationController=TextEditingController(text: productModel.location);
+    final TextEditingController statusController=TextEditingController(text: productModel.status);
     String hide=productModel.hide;
     List<String> hideString=['true','false'];
-    String status=productModel.status;
-    List<String> statusList=[  'available', 'inAvailable',];
+
     return BlocConsumer<AppCubit,AppStates>(
         builder: (context, state) {
           var cubit=AppCubit.get(context);
@@ -203,40 +203,14 @@ class UpdateProductScreen extends StatelessWidget {
                         }),
                   ),
                   const SizedBox(height: 10,),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 15.0),
-                    child: DropdownButtonFormField(
-                        items: [
-                          ...statusList.map((e) {
-                            return DropdownMenuItem(
-                              child: Text(e),
-                              value: e,
-                            );
-                          })
-                        ],
-                        decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.all(18.0),
-                          filled: true,
-                          fillColor: kGinColor,
-                          hintText: 'Stetus',
-                          hintStyle: GoogleFonts.poppins(
-                            color: kDarkGreenColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15.0,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(color: kGinColor),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(color: kDarkGreenColor),
-                          ),
-                        ),
-                        value: status,
-                        onChanged: (val){
-                          status=val!;
-                        }),
+
+                  CustomTextField(
+                    controller: statusController,
+                    hintText: 'Location',
+                    icon: Icons.device_thermostat,
+                    mixLines: 1,
+                    obscureText: false,
+                    keyboardType: TextInputType.visiblePassword,
                   ),
                   const SizedBox(height: 10,),
                   (state is LoadingUpdateProduct )?
@@ -247,11 +221,11 @@ class UpdateProductScreen extends StatelessWidget {
                       if (nameController.text.isNotEmpty &&quantityController.text.isNotEmpty
                           &&expTimeController.text.isNotEmpty &&
                           descController.text.isNotEmpty
-                          &&locationController.text.isNotEmpty &&status!=null&&hide!=null) {
+                          &&locationController.text.isNotEmpty &&statusController.text.isNotEmpty&&hide!=null) {
                         cubit.updateProduct(
                           hide: hide,
                             location: locationController.text,
-                            status: status,
+                            status: statusController.text,
                             name: nameController.text,
                             desc: descController.text,
                             expTime: expTimeController.text,

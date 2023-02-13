@@ -26,8 +26,6 @@ class LoginScreen extends StatelessWidget {
   final TextEditingController emailController=TextEditingController();
   final TextEditingController passwordController=TextEditingController();
 
-
-
   void requestPermission() async {
     FirebaseMessaging messaging = FirebaseMessaging.instance;
     NotificationSettings settings = await messaging.requestPermission(
@@ -106,6 +104,11 @@ class LoginScreen extends StatelessWidget {
                                   hintText: 'Username',
                                   icon: Icons.person,
                                   keyboardType: TextInputType.name,
+                                  validator: (value){
+                                    if(value!.isEmpty){
+                                      return 'Please Enter Mail';
+                                    }
+                                  },
                                 ),
                                 CustomTextField(
                                   mixLines: 1,
@@ -114,6 +117,11 @@ class LoginScreen extends StatelessWidget {
                                   icon: Icons.lock,
                                   obscureText: true,
                                   keyboardType: TextInputType.visiblePassword,
+                                  validator: (value){
+                                    if(value!.isEmpty){
+                                      return 'Please Enter Password';
+                                    }
+                                  },
                                 ),
                                 const SizedBox(height: 10,),
                                 Row(

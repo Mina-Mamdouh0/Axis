@@ -104,8 +104,6 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
       print('User declined or has not accepted permission');
     }
   }
-
-
   void listenFCM() async {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
@@ -218,6 +216,9 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                     onPressed: (){
                      if(massageController.text.isNotEmpty){
                        cubit.uploadOrder(
+                         statusProduct: widget.productModel.status,
+                         locationProduct: widget.productModel.location,
+                         emailUser: cubit.userModel!.email,
                          nameUser: cubit.userModel!.name,
                            urlImage: widget.productModel.urlImage,
                            idProduct: widget.productModel.idProduct,
@@ -249,7 +250,9 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
             BlocProvider.of<AppCubit>(context).getProductByFolderHideUser(nameFolder: widget.productModel.nameFolder);
             sendPushMessage(mtoken!, ' Order by ${BlocProvider.of<AppCubit>(context).userModel!.name} email :${BlocProvider.of<AppCubit>(context).userModel!.email} Order is :${widget.productModel.name} -- ${widget.quantity}','Order Product', );
 
-            sendEmail(email: BlocProvider.of<AppCubit>(context).userModel!.email, name: BlocProvider.of<AppCubit>(context).userModel!.name, msg: 'Order is :${widget.productModel.name} -- ${widget.quantity}');
+            sendEmail(email: BlocProvider.of<AppCubit>(context).userModel!.email,
+                name: BlocProvider.of<AppCubit>(context).userModel!.name,
+                msg: 'Order is :${widget.productModel.name} -- ${widget.quantity}');
 
           }else if (state is ErrorAddFolder){
             Fluttertoast.showToast(msg: 'Order Not Created');

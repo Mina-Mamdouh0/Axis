@@ -5,14 +5,18 @@ class OrderModel{
   final String idProduct;
   final String idUser;
   final String nameUser;
+  final String emailUser;
   final String idAdminCreatedProduct;
   final String urlImageProduct;
   final String quantityProduct;
+  final String statusProduct;
+  final String locationProduct;
   final String massageOrder;
   final bool confirmOne;
   final bool confirmTwo;
   final bool confirmThree;
   final String createAt;
+
 
   factory OrderModel.formJson(Map<String, dynamic> json,){
     return OrderModel(
@@ -29,12 +33,18 @@ class OrderModel{
         createAt:json['CreateAt'],
         massageOrder:json['MassageOrder'],
         nameUser:json['NameUser'],
+        locationProduct:json['LocationProduct'],
+        statusProduct:json['StatusProduct'],
+        emailUser:json['EmailUser'],
     );
   }
 
   OrderModel(
       {required this.nameProduct,
       required this.idOrder,
+      required this.emailUser,
+      required this.statusProduct,
+      required this.locationProduct,
       required this.massageOrder,
       required this.idProduct,
       required this.idUser,
@@ -64,6 +74,9 @@ class OrderModel{
       'ConfirmThree':confirmThree,
       'MassageOrder':massageOrder,
       'NameUser':nameUser,
+      'LocationProduct':locationProduct,
+      'StatusProduct':statusProduct,
+      'EmailUser':emailUser,
     };
 
   }

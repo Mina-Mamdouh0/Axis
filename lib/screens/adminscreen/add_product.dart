@@ -22,12 +22,7 @@ class AddProduct extends StatelessWidget {
    final TextEditingController quantityController=TextEditingController();
    final TextEditingController expTimeController=TextEditingController();
    final TextEditingController locationController=TextEditingController();
-
-   String? statues;
-   List<String> listStatues=[
-     'available',
-     'inAvailable',
-   ];
+   final TextEditingController statuesController=TextEditingController();
 
 
   @override
@@ -183,38 +178,12 @@ class AddProduct extends StatelessWidget {
                     keyboardType: TextInputType.text,
                   ),
                   const SizedBox(height: 10,),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 15.0),
-                    child: DropdownButtonFormField(
-                        items: [
-                          ...listStatues.map((e){
-                            return DropdownMenuItem(child: Text(e),
-                            value: e,);
-                          })
-                        ],
-                        value: statues,
-                        decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.all(18.0),
-                          filled: true,
-                          fillColor: kGinColor,
-                          hintText: 'Statues',
-                          hintStyle: GoogleFonts.poppins(
-                            color: kDarkGreenColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15.0,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(color: kGinColor),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(color: kDarkGreenColor),
-                          ),
-                        ),
-                        onChanged: (value){
-                          statues=value;
-                        }),
+                  CustomTextField(
+                    mixLines: 1,
+                    controller: statuesController,
+                    hintText: 'Statues',
+                    icon: Icons.multiple_stop_sharp,
+                    keyboardType: TextInputType.text,
                   ),
                   const SizedBox(height: 10,),
                   CustomTextField(
@@ -235,9 +204,9 @@ class AddProduct extends StatelessWidget {
                       if (nameController.text.isNotEmpty&&cubit.idProductController.text.isNotEmpty
                       &&quantityController.text.isNotEmpty&&expTimeController.text.isNotEmpty
                           &&locationController.text.isNotEmpty
-                      &&descController.text.isNotEmpty&&statues!=null) {
+                      &&descController.text.isNotEmpty&&statuesController.text.isNotEmpty) {
                         cubit.uploadProduct(
-                          status: statues!,
+                          status: statuesController.text,
                             location: locationController.text,
                             name: nameController.text,
                             desc: descController.text,

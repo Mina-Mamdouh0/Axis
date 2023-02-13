@@ -107,7 +107,7 @@ class SignOutState extends AppStates{}
 class ChangeImageState extends AppStates{}
 class GetSearchProduct extends AppStates{}
 class ChangeQRCode extends AppStates{}
-class ChangeTypeAccount extends AppStates{}
+class ChangeSendMail extends AppStates{}
 
 class SuccessConfirmTwoState extends AppStates{}
 class ErrorConfirmTwoState extends AppStates{}
